@@ -15,30 +15,15 @@ const memberSchema = new mongoose.Schema({
     required: [true, "Please enter your Sex"],
   },
   mobileNumber: {
-    type: String, 
+    type: String,
     required: [true, "Please enter your Mobile Number"],
     minlength: [11, "Your Mobile Number must be 11 digits long"],
   },
   tin: {
     type: String,
-    validate: {
-      validator: function(v) {
-        return !this.otherGovtId && (!v || v.trim()); // Valid if otherGovtId not provided and tin is not empty
-      },
-      message: "Tin Number is required if otherGovtId is not provided",
-    },
+    required: [true, "Tin Number is required"],
     unique: true,
     minlength: [12, "Your Tin Number must be 12 digits long"],
-  },
-  otherGovtId: {
-    type: String,
-    unique: true,
-    validate: {
-      validator: function(v) {
-        return this.tin || (!v || v.trim()); // Valid if tin provided or otherGovtId is not empty
-      },
-      message: "otherGovtId is required if Tin Number is not provided",
-    },
   },
   role: {
     type: String,

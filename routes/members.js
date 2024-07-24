@@ -9,7 +9,7 @@ const {
 } = require('../controllers/memberController');
 
 // Define your routes
-router.post('/register', registerMember);
+router.post('/registerMember', registerMember);
 router.get('/all', allMembers);
 router.get('/:id', singleMember);
 router.put('/update/:id', updateMember); // Update route
